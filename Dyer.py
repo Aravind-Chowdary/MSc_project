@@ -1,21 +1,19 @@
-import math
-import pycrypto
 
-M=math.infi
-N=(math.infi)+1
-N>M
-m={0,M}
-c={0,N}
-a={input('Please enter the word' )}
-txt=m.issubset(a)
-def key_gen(s, k):
-    λ=0
-    λ in s
-    λ > 8 /3*M
-    set= {2^λ,2^λ+1}
-    k in set
-    k > M^8/3
+from random import randrange
 
-def enc(k, r):
+
+def key_gen(l):
+    k=randrange(2**l,2**(l+1))
+    return k
+
+
+def enc(k, m):
+    r=randrange(k**0.75,k-k**0.75)
+    c=m*k+r
+    return c
+
+
+def dec(k, c):
+    return c/k
 
 
