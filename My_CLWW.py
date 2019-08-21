@@ -11,9 +11,16 @@ def key_gen(p):
 
 
 def ore_enc(k, m):
-    tmp_m = ""
-    tmpres = ""
+    ab = ""
+    ct =()
     for i in m:
-        tmp_m += i
-        tmpres += str((f(tmp_m[:-1], k) + int(tmp_m[-1])) % 3)
-    return tmpres
+        ab += i
+        ct += str((f(ab[:-1], k) + int(ab[-1])) % 3)
+    return ct
+
+
+def ore_compare(ct, ct1):
+    if  ct!=ct1:
+        return 0
+    else :
+        return 1
