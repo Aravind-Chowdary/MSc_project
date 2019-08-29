@@ -1,13 +1,15 @@
 from random import randrange
-
-t=''
-p=1**t
-f=k*(n*{0,1}**n-1)
+import pycrypto
 
 
 def key_gen(p):
-    k=randrange(f)
+    k=randrange()
     return k
+
+
+def pre(sk, m):
+    h=Hmac.new(sk,m,digestmod=SHA256)
+    return h.digestmod()
 
 
 def ore_enc(k, m):
