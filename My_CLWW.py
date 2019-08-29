@@ -14,15 +14,15 @@ def pre(sk, m):
 
 def ore_enc(k, m):
     ab = ""
-    ct =()
+    ct1 =()
     for i in m:
         ab += i
-        ct += str((f(ab[:-1], k) + int(ab[-1])) % 3)
-    return ct
+        ct1 += str((f(ab[:-1], k) + int(ab[-1])) % 3)
+    return ct1
 
 
-def ore_compare(ct, ct1):
-    if  ct!=ct1:
+def ore_compare(ct1, ct2, st):
+    if  ct1!=ct2:
         return 0
     else :
         return 1
