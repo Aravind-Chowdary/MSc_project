@@ -7,7 +7,7 @@ def key_gen():
 
 
 def init_vect():
-    iv = ''.join([chr(random.randint(0, 0xFF)) for i in range(16)])
+    iv = ''.join([chr(random.randint(0, 0xFF)) for i in range(16)])  # This needs to be involved in enc function(doubt)
 
 
 def enc(key, iv, data):
