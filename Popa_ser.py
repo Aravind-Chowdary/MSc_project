@@ -1,6 +1,10 @@
 from Crypto.Cipher import AES
 from Popa_cli import enc
 
+# Getting the value from the client needs to be done!!
+
+# Doubt- where does the dec method goes!!
+
 
 def dec(key,encd, adec, iv):
     aes = AES.new(key, AES.MODE_CBC, iv)
@@ -17,7 +21,7 @@ class Node:
     # A utility function to insert a new node with the given key
 
 
-def insert(root, node):
+def insert(root, node):  # Doubts in tree construction like how to use keys
     if root is None:
         root = node
     else:
