@@ -1,3 +1,13 @@
+from Crypto.Cipher import AES
+from Popa_cli import enc
+
+
+def dec(key,encd, adec, iv):
+    aes = AES.new(key, AES.MODE_CBC, iv)
+    decd = adec.decrypt(encd)
+    return decd
+
+
 class Node:
     def __init__(self, key):
         self.left = None
