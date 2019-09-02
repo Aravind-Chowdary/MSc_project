@@ -14,8 +14,10 @@ def enc(key, iv, data):
     aes = AES.new(key, AES.MODE_CBC, iv)
     # data = 'hello world 1234'   <- 16 bytes
     encd = aes.encrypt(data)
+    return encd
 
 
 def dec(key,encd, adec, iv):
     aes = AES.new(key, AES.MODE_CBC, iv)
     decd = adec.decrypt(encd)
+    return decd
