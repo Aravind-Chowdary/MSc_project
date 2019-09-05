@@ -17,7 +17,7 @@ def enc(key, iv, data):
     return encd
 
 
-def dec(key,encd, adec, iv):
+def dec(key,encd, iv):
     aes = AES.new(key, AES.MODE_CBC, iv)
-    decd = adec.decrypt(encd)
+    decd = aes.decrypt(encd)
     return decd
