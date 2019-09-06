@@ -1,18 +1,68 @@
-from Crypto.Cipher import AES
-from Popa_cli import enc
 
-# Getting the value from the client needs to be done!!
-
-# Doubt- where does the dec method goes!!
+from Popa_cli import dec
+import sqlite3
 
 
-def dec(key,encd, adec, iv):
-    aes = AES.new(key, AES.MODE_CBC, iv)
-    decd = adec.decrypt(encd)
-    return decd
+class OPETree:
+    # __ denotes private class member or method
+    def __init__(self):
+        pass
+
+    __key = None
+    __tree = None
+    __table = None #dictionary/map data type
+
+    def set_key(self, key):
+        self.__key = key
+
+    def insert_in_tree(self, enc_val, iv):
+        val = dec(self.__key,enc_val,iv)
+        if self.tree is None:
+            self.__tree = Tree.new(val)
+            path = ""
+            self.__insert_path_in_table(enc_val, path)
+        else:
+            path = self.__tree.insert(val, "") #Note: we initially set path as empty
+            self.__insert_path_in_table(enc_val, path)
+
+
+    def __insert_path_in_table(self, enc_val, path): #Add encrypted value and path to table
+
+        conn = sqlite3.connect('testdb1.sqlite')
+
+        cursor = conn.cursor()
+
+        query = '''
+               	    CREATE TABLE IF NOT EXISTS pepe(
+               	    	enc_val text, 
+               	    	path text
+               	    )
+               	'''
+
+        cursor.execute(query)
+
+        query1 = '''
+                INSERT INTO pepe (enc_val, path )
+                VALUES ( ?,? )
+                '''
+        cursor.execute(query1)
+        conn.commit()
+        conn.close()
+
+
+    def lookup_path(self, enc_val):
+
+
+    def compare(self, enc_val_1, enc_val_2):
+
+
 
 
 class Node:
+    __left=None
+    __right=None
+    __val=None
+
     def __init__(self, key):
         self.left = None
         self.right = None
@@ -21,17 +71,25 @@ class Node:
     # A utility function to insert a new node with the given key
 
 
-def insert(root, node):  # Doubts in tree construction like how to use keys
-    if root is None:
-        root = node
-    else:
-        if root.val < node.val:
-            if root.right is None:
-                root.right = node
+class Tree:
+    __root = None
+
+    def __init__(self, val):
+        self.__root = Node.new(val)
+
+    def insert(self, val, path):
+        return self.__insert(self.__root, val, path)
+
+    def __insert(self, node, val, path):
+        if node.val < val:
+            if node.right is None:
+                node.right = Node.new(val)
+                return path
             else:
-                insert(root.right, node)
+                self.__insert(node.right, val, path+"1")
         else:
-            if root.left is None:
-                root.left = node
+            if node.left is None:
+                node.left = Node.new(val)
+                return path
             else:
-                insert(root.left, node)
+                self.__insert(node.left, val, path+"0")
