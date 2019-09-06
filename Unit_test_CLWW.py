@@ -13,11 +13,11 @@ class SimpleTestCase(unittest.TestCase):
         c1 = ore_enc(self.k, m1)
         c2 = ore_enc(self.k, m2)
         if m1 < m2:
-            assert ore_compare(c1<c2)=-1
+            assert ore_compare(c1<c2) 
         if m1 > m2:
-            assert ore_compare(c1<c2)=1
+            assert ore_compare(c1<c2)
         if m1==m2:
-            assert ore_compare(c1=c2)=0
+            assert ore_compare(c1=c2)
         assert True
 
 
