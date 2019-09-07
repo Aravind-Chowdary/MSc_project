@@ -28,7 +28,7 @@ class OPETree:
 
     def __insert_path_in_table(self, enc_val, path): #Add encrypted value and path to table
 
-        conn = sqlite3.connect('testdb1.sqlite')
+        conn = sqlite3.connect('testdb2.sqlite')
 
         cursor = conn.cursor()
 
@@ -54,6 +54,25 @@ class OPETree:
 
 
     def compare(self, enc_val_1, enc_val_2):
+
+        path1 = self.lookup_path(enc_val_1)
+        path2 = self.lookup_path(enc_val_2)
+        cnt = 0
+        while path1[cnt] == path2[cnt]:
+            cnt += 1
+        if path1[cnt] == "" and path2[cnt] == "0":
+            return 1
+        if path1[cnt] == "" and path2[cnt] == "1":
+            return -1
+        if path1[cnt] == "0" and path2[cnt] == "":
+            return -1
+        if path1[cnt] == "1" and path2[cnt] == "":
+            return 1
+        if path1[cnt] == "0" and path2[cnt] == "1":
+            return -1
+        if path1[cnt] == "1" and path2[cnt] == "0":
+            return 1
+        return 0
 
 
 
