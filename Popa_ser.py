@@ -49,9 +49,19 @@ class OPETree:
         conn.commit()
         conn.close()
 
-
     def lookup_path(self, enc_val):
+        conn = sqlite3.connect('testdb2.sqlite')
 
+        cursor = conn.cursor()
+
+        query = '''
+                       	    SELECT path 
+                       	    FROM pepe
+                       	'''
+
+        cursor.execute(query)
+        conn.commit()
+        conn.close()
 
     def compare(self, enc_val_1, enc_val_2):
 
@@ -73,8 +83,6 @@ class OPETree:
         if path1[cnt] == "1" and path2[cnt] == "0":
             return 1
         return 0
-
-
 
 
 class Node:
