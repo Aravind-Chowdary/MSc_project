@@ -21,8 +21,14 @@ def ore_enc(k, m, h):
     return ct1
 
 
-def ore_compare(ct1, ct2, st):
-    if  ct1<ct2:
+def ore_compare(ct1, ct2):
+    if ct1 == ct2:
         return 0
-    else :
+    L = len(ct1)
+    cnt = 0
+    while ct1[cnt] == ct2[cnt]:
+        cnt += 1
+    if (int(ct1[cnt]) + 1) % 3 == int(ct2[cnt]):
+        return -1
+    else:
         return 1
