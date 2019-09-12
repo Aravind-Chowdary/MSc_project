@@ -70,3 +70,38 @@ class RedBlackTree:
         z.right = self.NIL
         z.color = "red"
         self.rb_insert_fixup(z)
+
+
+    def rb_insert_fixup(self, z):
+        i = 0
+        while z.p.color == "red":
+            if z.p == z.p.p.left:
+                y = z.p.p.right
+                if y.color == 'red':
+                    z.p.color = "black"
+                    y.color = "black"
+                    z.p.p.color = "red"
+                    z = z.p.p
+                else:
+                    if z == z.p.right:
+                        z = z.p
+                        self.left_rotate(z)
+                    z.p.color = 'black'
+                    z.p.p.color = 'red'
+                    self.right_rotate(z.p.p)
+            else:
+                y = z.p.p.left
+                if y.color == 'red':
+                    z.p.color = "black"
+                    y.color = "black"
+                    z.p.p.color = "red"
+                    z = z.p.p
+                else:
+                    if z == z.p.left:
+                        z = z.p
+                        self.right_rotate(z)
+                    z.p.color = 'black'
+                    z.p.p.color = 'red'
+                    self.left_rotate(z.p.p)
+            i += 1
+        self.root.color = 'black'
