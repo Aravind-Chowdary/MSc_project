@@ -44,3 +44,29 @@ class RedBlackTree:
             x.p.left = y
         y.right = x
         x.p = y
+
+    def insert(self, z):
+        new_node = self.Node(key=z)
+        self._insert(new_node)
+        self.size += 1
+
+    def _insert(self, z):
+        y = self.NIL
+        x = self.root
+        while x != self.NIL:
+            y = x
+            if z.key < x.key:
+                x = x.left
+            else:
+                x = x.right
+        z.p = y
+        if y == self.NIL:
+            self.root = z
+        elif z.key < y.key:
+            y.left = z
+        else:
+            y.right = z
+        z.left = self.NIL
+        z.right = self.NIL
+        z.color = "red"
+        self.rb_insert_fixup(z)
