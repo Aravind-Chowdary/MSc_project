@@ -20,12 +20,14 @@ class Tree:
     __root = None
 
 
-
-
 def enc (x,t,min,max,n ):
-    k = Crypto.Random.random.randint(0, 1)
+
     r=math.log(2,n)
     p=2**r
+    if x==t.x:
+        k = Crypto.Random.random.randint(0, 1)
+    else:
+        k==None
     if (x>t.x or k==1):
 
         if (t.right!= None):
