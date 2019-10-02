@@ -16,4 +16,7 @@
 -It is the server side implimentation of the Popa scheme
 
 **Popa_cli.py**
--It is the client side implimention of the Popa cheme 
+-It is the client side implimention of the Popa scheme 
+
+**Kerschabaum_cli.py**
+- It is the implementation of Kerschabaum schema
