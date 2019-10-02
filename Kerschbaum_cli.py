@@ -53,5 +53,6 @@ class Node:
         T={t}
         X={t.x}.union({x})
         sorted(X)
-
+        y=T.x
+    def dec
 
