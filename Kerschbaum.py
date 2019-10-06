@@ -56,3 +56,31 @@ def calc_max(l):
     r = l * math.log(2, n)
     return 2**r
 
+def encrypt(x, t, min, max):
+    global MAX
+    if x == t.plain:
+        coin = Crypto.Random.random.randint(0, 1)
+    else:
+        coin = None
+    if x > t.plain or coin == 1:
+        if t.right is not None:
+            return encrypt(x, t.right, t.cipher, max)
+        else:
+            if max - t.plain < 2:
+                return rebalance(x, -1, n)
+            t.right = Tree.new(x, t.cipher + math.ceil((max - t.cipher)/2.0))
+            return t.right.cipher
+    if x < t.plain or coin == 0:
+        if t.left is not None:
+            return encrypt(x, t.left, min, t.cipher)
+        else:
+            if t.cipher - min < 2:
+                return rebalance(x, -1, MAX)
+            t.left = Tree.new(x, min + math.ceil((t.cipher - min)/2.0))
+            return t.left.cipher
+
+def rebalance(x, min, max):
+
+
+
+def reencrypt(t, X, min, max):
