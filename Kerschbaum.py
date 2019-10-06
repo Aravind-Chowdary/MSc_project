@@ -80,7 +80,23 @@ def encrypt(x, t, min, max):
             return t.left.cipher
 
 def rebalance(x, min, max):
-
+    global T
+    X = get_all_plaintexts(T).append(x)
+    X.sort()
+    median = X[math.ceil(len(X)/2.0)]
+    t = Tree.new(median, min + math.ceil((max-min)/2.0))
+    reencrypt(t, X, min, max)
+    T = t
+    return get(t, x).cipher
 
 
 def reencrypt(t, X, min, max):
+    medianXidx = math.ceil(len(X)/2.0)
+    X1 = X[0:medianXidx-1]
+    X2 = X[medianXidx+1:]
+    medianX1 = X[math.ceil(len(X1)/2.0)]
+    medianX2 = X[math.ceil(len(X2)/2.0)]
+    encrypt(medianX1, t, min, max)
+    encrypt(medianX2, t, min, max)
+    reencrypt(t, X1, min, max)
+    reencrypt(t, X2, min, max)
