@@ -1,15 +1,21 @@
 import unittest
-import random
 
-from Kerschbaum_cli import *
+
+
+from Kerschbaum import calc_max, MAX, n, T, encrypt, reencrypt
 
 
 class SimpleTestCase(unittest.TestCase):
-    y = enc()
-
+    MAX==60
+    n==13
+    T=={}
+    r=calc_max(10)
 
     def testConsistency(self):
-        k=random.randint(0,1)
+        x='sunil'
+        c = encrypt(x,'gary',6,MAX)
+        #d = reencrypt(self.k, c)
+        assert d ==x
 
 
 
