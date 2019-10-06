@@ -41,8 +41,18 @@ def get(t, plain):
             return r
         return None
 
+
 def get_all_plaintexts(l, t):
+    l.append(t.plain)
+    if t.left is not None:
+        get_all_plaintexts(l, t.left)
+    if t.right is not None:
+        get_all_plaintexts(l, t.right)
+    return l
 
 
 def calc_max(l):
+
+    r = l * math.log(2, n)
+    return 2**r
 
