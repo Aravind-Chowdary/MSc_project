@@ -14,7 +14,7 @@ class SimpleTestCase(unittest.TestCase):
     def testConsistency(self):
         x='sunil'
         c = encrypt(x,'gary',6,MAX)
-        #d = reencrypt(self.k, c)
+        d = reencrypt(None,x,-1,calc_max(10))
         assert d ==x
 
 
