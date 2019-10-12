@@ -19,16 +19,16 @@
 - It is the client side implimention of the Popa scheme 
 
 **Unit_test_Popa.py**
-- It is the unit test implementation of the POPA scheme
+- It is the unit test implementation for the POPA scheme
 
 **Kerschabaum.py**
 - It is the implementation of Kerschabaum schee
 
 **Unit_test_Kerschabaum.py**
-- It is then unit test implementation for the kerschabaum scheme
+- It is the unit test implementation for the kerschabaum scheme
 
 **Boldyreva.py**
 - It is the implementation of the Boldyreva scheme 
 
-**Unit_tst_Boldyreva.py**
+**Unit_test_Boldyreva.py**
 - It is the unit test implementation for the Boldyreva scheme
