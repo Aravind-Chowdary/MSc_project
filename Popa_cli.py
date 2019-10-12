@@ -1,5 +1,6 @@
 from Crypto.Random import random
 from Crypto.Cipher import AES
+from Popa_ser import OPETree
 
 
 def key_gen():
@@ -14,6 +15,7 @@ def enc(key, iv, data):
     aes = AES.new(key, AES.MODE_CBC, iv)
     # data = 'hello world 1234'   <- 16 bytes
     encd = aes.encrypt(data)
+    OPETree.insert_in_tree.enc_val=encd
     return encd
 
 
