@@ -100,3 +100,11 @@ def reencrypt(t, X, min, max):
     encrypt(medianX2, t, min, max)
     reencrypt(t, X1, min, max)
     reencrypt(t, X2, min, max)
+
+def decrypt(median,t):
+    if median>t.cipher:
+        return decrypt(median,t.right)
+    elif median<t.cipher:
+        return decrypt(median.t.left)
+    else :
+        return t.plain
